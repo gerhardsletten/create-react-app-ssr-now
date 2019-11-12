@@ -21,4 +21,4 @@ A demo running a Create react app with server-side render through a `@now/node` 
 
 ## Credits
 
-Inspired by [hgithub.com/zeusdeux/ssr-on-zeit](https://github.com/zeusdeux/ssr-on-zeit), but with my own preferred setup with Styled Components, React Helmet, react-app-rewired and Graphql and linked schema.
+Inspired by [github.com/zeusdeux/ssr-on-zeit](https://github.com/zeusdeux/ssr-on-zeit), but with my own preferred setup with Styled Components, React Helmet, react-app-rewired and Graphql and linked schema.
