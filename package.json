@@ -1,0 +1,58 @@
+{
+  "name": "now-cra-with-ssr",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/react-hooks": "^3.1.3",
+    "@hot-loader/react-dom": "^16.11.0",
+    "@loadable/babel-plugin": "^5.10.3",
+    "@loadable/component": "^5.10.3",
+    "@smooth-ui/core-sc": "^11.1.1",
+    "apollo-boost": "^0.4.4",
+    "graphql": "^14.5.8",
+    "node-fetch": "^2.6.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-helmet-async": "^1.0.4",
+    "react-hot-loader": "^4.12.16",
+    "react-router-dom": "^5.1.2",
+    "reakit": "^1.0.0-beta.11",
+    "styled-components": "^4.4.1"
+  },
+  "devDependencies": {
+    "@apollo/react-ssr": "^3.1.3",
+    "@loadable/server": "^5.10.3",
+    "@loadable/webpack-plugin": "^5.7.1",
+    "babel-plugin-styled-components": "^1.10.6",
+    "better-npm-run": "^0.1.1",
+    "customize-cra": "^0.8.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "http-proxy-middleware": "^0.20.0",
+    "husky": "^3.0.9",
+    "prettier": "^1.19.1",
+    "pretty-quick": "^2.0.1",
+    "react-app-rewired": "^2.1.5",
+    "react-scripts": "^3.2.0",
+    "webpack-bundle-analyzer": "^3.6.0",
+    "webpack-cli": "^3.3.10"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "now-dev": "BROWSER=none react-app-rewired start",
+    "build-local": "NODE_ENV=production react-app-rewired build && mv build/loadable-stats.json .",
+    "build": "echo \"Build local\"",
+    "deploy-now": "npm run build-ssr && now",
+    "build-ssr": "npm run build-local && npm run build-ssr-script",
+    "build-ssr-script": "NODE_ENV=production webpack --hide-modules --progress --display-error-details --config webpack.ssr-config.js",
+    "analyze": "ANALYZE=1 react-app-rewired build",
+    "test": "eslint -c .eslintrc src backend",
+    "format": "prettier --write \"src/**/*.js\" \"backend/**/*.js\" \"config-overrides.js\"",
+    "precommit": "pretty-quick --staged"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

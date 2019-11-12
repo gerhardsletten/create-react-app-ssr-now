@@ -1,0 +1,41 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "better-npm-run start",
+    "dev": "nodemon --exec npm run micro-dev",
+    "micro-dev": "micro-dev -p 8000 --silent --cold",
+    "dev-ssr": "nodemon --exec npm run micro-dev-ssr",
+    "micro-dev-ssr": "micro-dev ssr.js -p 3000 --silent --cold",
+    "jest": "jest",
+    "test-watch": "jest --watch"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "micro -l tcp://localhost:8000"
+    }
+  },
+  "author": "Eyvind Gerhard Sletten <gerhardsletten@gmail.com> (http://www.metabits.no/)",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-client": "^2.6.4",
+    "apollo-link-schema": "^1.2.4",
+    "apollo-server-micro": "^2.9.7",
+    "micro": "^9.3.4"
+  },
+  "devDependencies": {
+    "better-npm-run": "^0.1.1",
+    "jest": "^24.9.0",
+    "micro-dev": "^3.0.0",
+    "nodemon": "^1.19.4"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "fixtures"
+    ]
+  }
+}
