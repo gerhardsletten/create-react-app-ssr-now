@@ -1,6 +1,6 @@
 import React from 'react'
 import loadable from '@loadable/component'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 
@@ -22,12 +22,17 @@ const query = gql(`
   }
 `)
 
+const OldPage = () => {
+  return <Redirect to="/" />
+}
+
 const App = () => {
   const { data = {} } = useQuery(query)
   return (
     <Layout menu={data.allPages}>
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/oldpage" exact component={OldPage} />
         <Route path="/:slug" component={Page} />
       </Switch>
     </Layout>

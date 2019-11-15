@@ -20,13 +20,17 @@ const query = gql(`
 const Page = ({
   match: {
     params: { slug }
-  }
+  },
+  staticContext
 }) => {
   const { data, loading } = useQuery(query, {
     variables: {
       slug: `/${slug}`
     }
   })
+  if (!!staticContext && !loading && !data.pageBySlug) {
+    staticContext.status = 404
+  }
   const found = data && data.pageBySlug
   const title = found ? found.title : loading ? 'Loading' : '404 Not found'
   return (

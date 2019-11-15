@@ -1,5 +1,5 @@
 const { ApolloServer } = require('apollo-server-micro')
-const schema = require('./schema')
+const { schema, context } = require('./schema')
 
-const apolloServer = new ApolloServer({ schema })
+const apolloServer = new ApolloServer({ schema, context })
 module.exports = apolloServer.createHandler()

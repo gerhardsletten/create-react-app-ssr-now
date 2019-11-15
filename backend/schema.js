@@ -46,4 +46,14 @@ const schema = makeExecutableSchema({
   resolvers
 })
 
-module.exports = schema
+const context = ({ req, res }) => {
+  console.log('context', req.url)
+  return {
+    xx: 'hei'
+  }
+}
+
+module.exports = {
+  schema,
+  context
+}

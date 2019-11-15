@@ -5,7 +5,7 @@ const { InMemoryCache } = require('apollo-cache-inmemory')
 const { SchemaLink } = require('apollo-link-schema')
 
 const getAppState = require('../generated-ssr-helper').default
-const schema = require('./schema')
+const { schema, context } = require('./schema')
 
 const statsJSON = readFileSync(
   join(__dirname, '..', 'loadable-stats.json'),
@@ -13,11 +13,14 @@ const statsJSON = readFileSync(
 )
 const stats = JSON.parse(statsJSON)
 
-async function getContent(req) {
+async function getContent({ req, res }) {
   const { url } = req
   const client = new ApolloClient({
     ssrMode: true,
-    link: new SchemaLink({ schema }),
+    link: new SchemaLink({
+      schema,
+      context: context({ req, res })
+    }),
     cache: new InMemoryCache()
   })
   const {
@@ -60,14 +63,14 @@ async function getContent(req) {
 
 module.exports = async (req, res) => {
   try {
-    const { content, ctx } = await getContent(req)
+    const { content, ctx } = await getContent({ req, res })
     if (ctx.url) {
       res.writeHead(301, {
         Location: ctx.url
       })
       res.end()
     }
-    res.writeHead(ctx.statusCode || 200, {
+    res.writeHead(ctx.status || 200, {
       'Content-Type': 'text/html'
     })
     res.end(content)
