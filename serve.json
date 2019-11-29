@@ -1,0 +1,10 @@
+{
+  "proxy": [
+    { "source": "/graphql", "destination": "http://localhost:8000/graphql" }
+  ],
+  "renderSingle": true,
+  "rewrites": [
+    { "source": "**", "destination": "/index.html" }
+  ],
+  "public": "build"
+}

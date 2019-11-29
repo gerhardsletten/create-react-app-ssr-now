@@ -3,5 +3,9 @@
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error"
+  },
+  "globals": {
+    "self": true,
+    "workbox": true
   }
 }

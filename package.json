@@ -9,6 +9,7 @@
     "@loadable/component": "^5.10.3",
     "@smooth-ui/core-sc": "^11.1.1",
     "apollo-boost": "^0.4.4",
+    "apollo-cache-persist": "^0.1.1",
     "graphql": "^14.5.8",
     "node-fetch": "^2.6.0",
     "react": "^16.11.0",
@@ -33,14 +34,19 @@
     "pretty-quick": "^2.0.1",
     "react-app-rewired": "^2.1.5",
     "react-scripts": "^3.2.0",
+    "serve-proxied": "^11.2.0",
     "webpack-bundle-analyzer": "^3.6.0",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "workbox-webpack-plugin": "^4.3.1"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "now-dev": "BROWSER=none react-app-rewired start",
+    "build-frontend": "NODE_ENV=production react-app-rewired build",
+    "serve": "serve",
     "build-local": "NODE_ENV=production react-app-rewired build && mv build/loadable-stats.json .",
     "build": "echo \"Build local\"",
+    "build-now": "echo \"Build local\"",
     "deploy-now": "npm run build-ssr && now",
     "build-ssr": "npm run build-local && npm run build-ssr-script",
     "build-ssr-script": "NODE_ENV=production webpack --hide-modules --progress --display-error-details --config webpack.ssr-config.js",
