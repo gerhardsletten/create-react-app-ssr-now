@@ -47,7 +47,6 @@ const schema = makeExecutableSchema({
 })
 
 const context = ({ req, res }) => {
-  console.log('context', req.url)
   return {
     xx: 'hei'
   }

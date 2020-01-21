@@ -37,7 +37,7 @@ const Page = ({
     <PageHelper title={title} loading={loading}>
       {found && (
         <>
-          <PageTitle>{found.title}</PageTitle>
+          <PageTitle>{found.title} v3</PageTitle>
           <HtmlContent content={found.content} />
         </>
       )}
